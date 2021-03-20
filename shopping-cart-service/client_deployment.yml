@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cart-client-service
+spec:
+  selector:
+    app: cart-client-service
+  ports:
+  - protocol: TCP
+    port: 8090
+    nodePort: 30082
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart-client-service
+spec:
+  selector:
+      matchLabels:
+        app: cart-client-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cart-client-service
+    spec:
+      containers:
+        - name: cart-client-service
+          image: cart-client-service:1.0
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8090
