@@ -4,12 +4,10 @@ The project is at a initial phase and the plan is to add more content to it and 
 If you are planning to run the example on mini kube then please make sure to follow the instruction specific to it as I have not provided the instructions for it.
 Once you are ready for the testing it, following is what you will need :- 
 
-	* 
 If you want to check out the code and build the project then 
-
-		* 
-A docker Image
-		* 
-Set up Kubernetes namespaces, Roles , Binding, Service Accounts. Script has already been provided
+    A docker Image,
+    Push Image to your repository,
+    Set up Kubernetes namespaces, Roles , Binding, Service Accounts. Script has already been provided,
+    Changes Image path in the Kube deployment files
 
 
