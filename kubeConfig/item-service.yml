@@ -1,0 +1,35 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: item-service
+  namespace: namespace2
+spec:
+  selector:
+    app: item-service
+  ports:
+  - protocol: TCP
+    port: 8090
+    #nodePort: 30081
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: item-service
+  namespace: namespace2
+spec:
+  selector:
+      matchLabels:
+        app: item-service
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: item-service
+    spec:
+      serviceAccountName: default
+      containers:
+        - name: item-service
+          image: amit4sun/item-service:1.0
+          ports:
+          - containerPort: 8090
